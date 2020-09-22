@@ -3,6 +3,7 @@
 if [ ! -z "$AWS_ECS_HOST_NETWORK" ]; then
   CONSUL_HTTP_ADDR=https://$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4):8501
   CONSUL_GRPC_ADDR=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4):8502
+  echo ${CONSUL_HCL_SERVICE_CONFIG} > ${SERVICE_CONFIG}
 fi
 
 # Wait until Consul can be contacted
