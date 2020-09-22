@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -z "$AWS_ECS_HOST_NETWORK" ]; then
+  CONSUL_HTTP_ADDR=https://$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4):8501
+  CONSUL_GRPC_ADDR=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4):8502
+fi
+
 # Wait until Consul can be contacted
 until curl -s -k ${CONSUL_HTTP_ADDR}/v1/status/leader | grep 8300; do
   echo "Waiting for Consul to start"
