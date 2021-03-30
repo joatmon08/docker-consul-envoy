@@ -1,6 +1,6 @@
 .PHONY: build build_and_push
 DOCKER_REPOSITORY="joatmon08/consul-envoy"
-CONSUL_VERSION=1.9.1
+CONSUL_VERSION=1.10.0-alpha
 ENVOY_VERSION=1.16.0
 
 build:
